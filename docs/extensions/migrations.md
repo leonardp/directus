@@ -32,16 +32,18 @@ Migrations have to export an `up` and a `down` function. These functions get a [
 can be used to do virtually whatever.
 
 ```js
-export async function up(knex) {
+async function up(knex) {
 	await knex.schema.createTable('test', (table) => {
 		table.increments();
 		table.string('rijk');
 	});
 }
 
-export async function down(knex) {
+async function down(knex) {
 	await knex.schema.dropTable('test');
 }
+
+module.exports = { up, down };
 ```
 
 ::: danger Danger
